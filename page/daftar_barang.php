@@ -42,9 +42,9 @@ $data = $koneksi->query($query);
                                     <a href="index.php?hal=edit_barang&id=<?=$value['id_barang'];?>" class="btn btn-sm bg-gradient-primary">
                                         <i class="fas fa-edit"></i> Edit
                                     </a>
-                                    <button type="button" class="btn btn-sm bg-gradient-danger">
+                                    <a href="index.php?hal=hapus_barang&id=<?=$value['id_barang'];?>" class="btn btn-sm bg-gradient-danger">
                                         <i class="fas fa-trash-alt"></i> Hapus
-                                    </button>
+                                    </a>
                                 </td>
                             </tr>
                             <?php
