@@ -38,9 +38,10 @@ $data = $koneksi->query($query);
                                 <td><?=$value['satuan'];?></td>
                                 <td><?=$value['id_operator'];?></td>
                                 <td>
-                                    <button type="button" class="btn btn-sm bg-gradient-primary">
+                                    
+                                    <a href="index.php?hal=edit_barang&id=<?=$value['id_barang'];?>" class="btn btn-sm bg-gradient-primary">
                                         <i class="fas fa-edit"></i> Edit
-                                    </button>
+                                    </a>
                                     <button type="button" class="btn btn-sm bg-gradient-danger">
                                         <i class="fas fa-trash-alt"></i> Hapus
                                     </button>
