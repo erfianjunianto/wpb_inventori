@@ -1,18 +1,31 @@
 <?php
-include("./conn.php");
 
-$kode_barang  = $_POST['kode_barang'];
-$nama_barang = $_POST['nama_barang'];
-$harga_barang = $_POST['harga_barang'];
-$satuan = $_POST['satuan'];
+if(isset($_POST['proses'])){
+    include("./conn.php");
+    date_default_timezone_set("Asia/Jakarta");
 
-// echo $satuan;
-// query insert 
-$tgl = date('Y-m-d H:i:s', time());
+    $kode_barang  = $_POST['kode_barang'];
+    $nama_barang = $_POST['nama_barang'];
+    $harga_barang = $_POST['harga_barang'];
+    $satuan = $_POST['satuan'];
+    
+    // echo $satuan;
+    // query insert 
+    $tgl = date('Y-m-d H:i:s', time());
+    // query untuk melakukan insert data ke dalam tabel barang
+    $query = "INSERT INTO tbl_barang(kode_barang, nama_barang, harga_barang, satuan, created_at, updated_at) values ('$kode_barang', '$nama_barang', '$harga_barang', '$satuan','$tgl','$tgl')";
+    
+    $insert = $koneksi->query($query);
+    if($insert){
+        ?>
+            <script>
+                alert('Berhasil menambahkan data');
+                window.location="index.php?hal=daftar_barang";
+            </script>
+        <?php
+    }
+}
 
-$query = "INSERT INTO tbl_barang(kode_barang, nama_barang, harga_barang, satuan, created_at, updated_at) values ('$kode_barang', '$nama_barang', '$harga_barang', '$satuan','$tgl','$tgl')";
-
-$insert = $koneksi->query($query);
 
 ?>
 
@@ -48,7 +61,8 @@ $insert = $koneksi->query($query);
             </div>
 
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-default">Batal</button>
+                <button type="submit" name="proses" class="btn btn-primary float-right">Simpan</button>
             </div>
         </form>
     </div>
